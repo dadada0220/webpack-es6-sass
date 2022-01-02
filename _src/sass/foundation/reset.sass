@@ -1,0 +1,63 @@
+@charset "utf-8"
+
+@use "global" as *
+
+/*!
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+
+*, *::before, *::after
+  box-sizing: border-box
+
+*
+  margin: 0
+
+html, body
+  height: 100%
+
+body
+  -webkit-font-smoothing: antialiased
+
+img, picture, video, canvas, svg
+  display: block
+  max-width: 100%
+
+input, button, textarea, select
+  font: inherit
+
+p, h1, h2, h3, h4, h5, h6
+  overflow-wrap: break-word
+
+// Add reset style
+// **********************************************
+
+body
+  -ms-text-size-adjust: 100%
+  -webkit-text-size-adjust: 100%
+
+main
+  display: block
+
+li
+  list-style: none
+
+h1, h2, h3, h4, h5, h6
+  font-size: 16px
+  font-weight: bold
+
+a
+  color: inherit
+  text-decoration: none
+  &:hover
+    color: inherit
+
+img
+  vertical-align: middle
+  height: auto
+
+address
+  font-style: normal
+
+sup
+  vertical-align: super
+  font-size: smaller

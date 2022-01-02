@@ -1,0 +1,131 @@
+@charset "utf-8"
+
+@use "global" as *
+
+input,
+button,
+textarea,
+select
+  display: block
+  background: none
+  border: none
+  border-radius: 0
+  outline: none
+  width: 100%
+  margin: 0
+  padding: 0
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  -moz-appearance: textfield
+
+  // オートフィルで入力した際の文字色と入力欄の背景色
+  &:-webkit-autofill
+    color: $c--text
+    -webkit-box-shadow: 0 0 0px 1000px $c--white inset
+
+  // プレースホルダーの文字色
+  &::placeholder
+    color: #b5b5b6
+
+  // input[type="number"]の増減ボタン非表示
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button
+    -webkit-appearance: none
+    margin: 0
+
+input,
+textarea,
+select
+  background-color: $c--white
+  border: solid 1px $c--gray-m
+  border-radius: 3px
+  padding: 10px 12px
+  &[readonly]
+    color: rgba($c--black, .7)
+    border: none
+    border-radius: 0
+
+textarea
+  min-height: 100px
+  resize: vertical
+
+select
+  -webkit-appearance: none
+  -moz-appearance: none
+  appearance: none
+  // IEの矢印を非表示
+  &::-ms-expand
+    display: none
+
+button
+  cursor: pointer
+
+// @see https://github.com/mike-engel/a11y-css-reset
+%__input_radio_check_hide
+  position: absolute
+  white-space: nowrap
+  width: 1px
+  height: 1px
+  border: 0
+  margin: -1px
+  padding: 0
+  overflow: hidden
+  clip: rect(0 0 0 0)
+  clip-path: inset(50%)
+
+label.__checkbox
+  display: block
+  input[type="checkbox"]
+    $parent_checkbox: &
+    @extend %__input_radio_check_hide
+    + span
+      display: flex
+      align-items: center
+      position: relative
+      cursor: pointer
+      &::before
+        content: ""
+        display: block
+        background-color: $c--white
+        border: solid 1px $c--white
+        outline: solid 1px $c--gray-m
+        border-radius: 1px
+        width: 16px
+        height: 16px
+        margin-right: 11px
+        @at-root #{$parent_checkbox}:checked + span::before
+          background-color: $c--primary
+          border: solid 2px $c--white
+
+label.__radio
+  display: block
+  input[type="radio"]
+    $parent_radio: &
+    @extend %__input_radio_check_hide
+    + span
+      display: flex
+      align-items: center
+      position: relative
+      cursor: pointer
+      &::before
+        content: ""
+        display: block
+        background-color: $c--white
+        border-radius: 50%
+        outline: solid 2px $c--primary
+        width: 16px
+        height: 16px
+        margin-right: 11px
+        @at-root #{$parent_radio}:checked + span::before
+          background-color: $c--primary
+          border: solid 3px $c--white
+          outline: solid 2px $c--primary
+
+select
+  cursor: pointer
+  padding-right: 32px
+  background-repeat: no-repeat
+  background-position: right 8px center
+  background-size: 15px 15px
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAuUlEQVRoge3WwQ6CMBCE4b4etx40HPTp4TEw0Uq6hJQWFXZDif+X7HWYUaM6BwAAAACfNeH6eN4g38/yG4P8MfgZbwjXKma3MVPye8XsyXyA5oi0/Ps6hdwFn3nQ3hG58oOz+YiOLpkHPsLdN2RdC1k3laYrNEYcVl7sGXF4ebFlRDXlxS8jqisvvhlRbXmxNqL68qL0na7922Eq905U/8qnSiNOUV6kI05VXsjf484Z/rcBAAAA8L9eveqSk3Ij7QgAAAAASUVORK5CYII=)
