@@ -1,9 +1,8 @@
-# webpack（ES6 + Sass + Pug）
-ES6、Sass、Pugをコンパイルできるwebpackのテンプレート  
-Node.js：`12.18.3`での動作確認済み  
+# webpack（ES6 + Sass）
+ES6、Sassをコンパイルできるwebpackのテンプレート  
+Node.js：`14.17.1`での動作確認済み  
 
 ## 主な機能
-- PugをHTMLにコンパイル
 - Sass（Scss）をCSSにコンパイル  
 - ES6をES5にコンパイル  
 - cssとjsをそれぞれ別ファイルとして出力  
@@ -28,21 +27,4 @@ npm run watch
 以下コマンド実行後、圧縮してコンパイルされる  
 ```
 npm run build
-```
-
-## Pugが不要の場合
-`webpack.config.js`の以下の記述を編集  
-`pugConfig`の部分をコメントアウトか削除する
-```
-module.exports = [
-  scssAndJsConfig,
-  pugConfig
-];
-```
-↓
-```
-module.exports = [
-  scssAndJsConfig,
-  // pugConfig
-];
 ```
