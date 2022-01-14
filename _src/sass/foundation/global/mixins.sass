@@ -126,8 +126,8 @@
 // **********************************************
 // 親要素に「counter-reset: $num_name」を指定する
 =counter($num_name, $before_text, $after_text)
-  content: "#{$before_text}" counter(num_ + $num_name) "#{$after_text}"
-  counter-increment: num_ + $num_name
+  content: "#{$before_text}" counter($num_name) "#{$after_text}"
+  counter-increment: $num_name
 
 // スクロールバーを非表示
 // **********************************************
