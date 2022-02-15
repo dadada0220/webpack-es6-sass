@@ -97,11 +97,10 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _module_Drawer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/Drawer */ "./_src/js/module/Drawer.js");
 /* harmony import */ var _module_SmoothScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./module/SmoothScroll */ "./_src/js/module/SmoothScroll.js");
-/* harmony import */ var _module_Accordion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./module/Accordion */ "./_src/js/module/Accordion.js");
 // import adjustViewport from './function/adjustViewport'
 
-
- // ブレイクポイント
+ // import Accordion from './module/Accordion';
+// ブレイクポイント
 
 var bp = {
   sm: 640,
@@ -131,7 +130,7 @@ var init = function init() {
 };
 
 window.addEventListener('DOMContentLoaded', function () {
-  // adjustViewport()
+  // adjustViewport();
   init();
 });
 
@@ -204,142 +203,6 @@ __webpack_require__.r(__webpack_exports__);
   if (!_isFixed) window.scrollTo(0, scrollY);
   return;
 });
-
-/***/ }),
-
-/***/ "./_src/js/module/Accordion.js":
-/*!*************************************!*\
-  !*** ./_src/js/module/Accordion.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Accordion; });
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-/**
- * アコーディオンのクラス
- * 使用例）
- *  <div class="p-accordion" data-js-accordion>
-      <button class="p-accordion__btn" type="button" data-js-accordion-btn>お申込み内容</button>
-      <div class="p-accordion__content" data-js-accordion-content="false">
-        // アコーディオンの中身
-      </div>
-    </div>
- */
-var Accordion = /*#__PURE__*/function () {
-  function Accordion(_parm) {
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Accordion);
-
-    this.arrayElmsAccordion = Array.prototype.slice.call(document.querySelectorAll('[data-js-accordion]'));
-    if (!this.arrayElmsAccordion.length) return;
-    this.attrBtn = 'data-js-accordion-btn';
-    this.attrContent = 'data-js-accordion-content';
-    this.class = '__is-show';
-  }
-  /**
-   * 切り替えボタンのクラスを付与/削除する
-   * @param {Boolean} _isShow trueなら付与 / falseなら削除する
-   * @param {Element} _elmBtn 切り替えボタン要素
-   */
-
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Accordion, [{
-    key: "toggleBtnClass",
-    value: function toggleBtnClass(_isShow, _elmBtn) {
-      if (_isShow) {
-        _elmBtn.classList.add(this.class);
-      } else {
-        _elmBtn.classList.remove(this.class);
-      }
-    }
-    /**
-     * 表示/非表示を切り替える
-     * @param {Boolean} _isShow trueなら表示 / falseなら非表示にする
-     * @param {Element} _elmContent 表示する要素
-     * @param {Number} _contentHeight 表示する要素のデフォルトの高さ
-     */
-
-  }, {
-    key: "toggleShow",
-    value: function toggleShow(_isShow, _elmContent, _contentHeight) {
-      if (_isShow) {
-        // 表示する
-        _elmContent.style.height = "".concat(_contentHeight, "px");
-
-        _elmContent.setAttribute(this.attrContent, 'true');
-      } else {
-        // 非表示にする
-        _elmContent.style.height = '0';
-
-        _elmContent.setAttribute(this.attrContent, 'false');
-      }
-    }
-    /**
-     * アコーディオン要素の高さを取得する
-     * @param {Element} _elmContent アコーディオン要素
-     */
-
-  }, {
-    key: "getContentHeight",
-    value: function getContentHeight(_elmContent) {
-      return _elmContent.clientHeight;
-    }
-    /**
-     * 全てのアコーディオン要素に対してイベントを付与
-     * @param {Element} _elmBtn 切り替えボタン要素
-     * @param {Element} _elmContent 表示する要素
-     * @param {Number} _contentHeight 表示する要素のデフォルトの高さ
-     */
-
-  }, {
-    key: "addEvent",
-    value: function addEvent(_elmBtn, _elmContent, _contentHeight) {
-      var _this = this;
-
-      _elmBtn.addEventListener('click', function (_ev) {
-        // 文字列型のtrue/falseをBoolean型に変換
-        var isShow = _elmContent.getAttribute(_this.attrContent).toLowerCase() === 'true';
-
-        _this.toggleShow(!isShow, _elmContent, _contentHeight);
-
-        _this.toggleBtnClass(!isShow, _elmBtn);
-      });
-    }
-  }, {
-    key: "init",
-    value: function init() {
-      var _this2 = this;
-
-      if (!this.arrayElmsAccordion.length) return; // 全てのアコーディオン要素に対して実行
-
-      this.arrayElmsAccordion.forEach(function (_elmAccordion) {
-        // 必要な要素、情報を取得
-        var elmBtn = _elmAccordion.querySelector("[".concat(_this2.attrBtn, "]"));
-
-        var elmContent = _elmAccordion.querySelector("[".concat(_this2.attrContent, "]"));
-
-        var contentHeight = _this2.getContentHeight(elmContent); // 非表示にする
-
-
-        elmContent.style.height = 0; // イベント付与
-
-        _this2.addEvent(elmBtn, elmContent, contentHeight);
-      });
-    }
-  }]);
-
-  return Accordion;
-}();
-
-
 
 /***/ }),
 
@@ -518,6 +381,11 @@ var SmoothScroll = /*#__PURE__*/function () {
     this.elmFixHeader = document.querySelector(_parm.fixHeader) || false;
     this.addGap = _parm.addGap || 0;
   }
+  /**
+   * 任意の位置までスクロールする
+   * @param {EventObject} _event イベントのオブジェクト
+   */
+
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(SmoothScroll, [{
     key: "scroll",

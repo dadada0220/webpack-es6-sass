@@ -8,7 +8,7 @@ export default (_executeWindowWidth) => {
   const elmViewport = document.querySelector('meta[name="viewport"]');
   const valueViewport =
     window.innerWidth < executeWindowWidth
-      ? `width=${executeWindowWidth}`
+      ? `width=${executeWindowWidth}, user-scalable=no, target-densitydpi=device-dpi`
       : 'width=device-width, initial-scale=1';
   elmViewport.setAttribute('content', valueViewport);
   return;

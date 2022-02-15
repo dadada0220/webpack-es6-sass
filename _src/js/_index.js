@@ -2,7 +2,7 @@
 
 import Drawer from './module/Drawer';
 import SmoothScroll from './module/SmoothScroll';
-import Accordion from './module/Accordion';
+// import Accordion from './module/Accordion';
 
 // ブレイクポイント
 const bp = {
@@ -34,6 +34,6 @@ const init = () => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  // adjustViewport()
+  // adjustViewport();
   init();
 });

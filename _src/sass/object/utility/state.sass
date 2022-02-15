@@ -2,11 +2,18 @@
 
 @use "../../foundation/global" as *
 
-.is-md-hide
+.is-sm:hide
+  +max-screen($breackpoint_sm)
+    display: none
+
+.is-md:hide
   +max-screen($breackpoint_md)
     display: none
 
-.is-md-show
-  display: none
-  +max-screen($breackpoint_md)
-    display: block
+.is-lg:hide
+  +max-screen($breackpoint_lg)
+    display: none
+
+.is-xl:hide
+  +max-screen($breackpoint_xl)
+    display: none

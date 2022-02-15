@@ -15,6 +15,11 @@ export default class SmoothScroll {
     this.elmFixHeader = document.querySelector(_parm.fixHeader) || false;
     this.addGap = _parm.addGap || 0;
   }
+
+  /**
+   * 任意の位置までスクロールする
+   * @param {EventObject} _event イベントのオブジェクト
+   */
   scroll(_event) {
     smoothscroll.polyfill();
     _event.preventDefault();
@@ -28,6 +33,7 @@ export default class SmoothScroll {
       behavior: 'smooth',
     });
   }
+
   addEvent() {
     this.elmLinks.forEach((_elmLink) => {
       _elmLink.addEventListener('click', (_ev) => {
@@ -35,6 +41,7 @@ export default class SmoothScroll {
       });
     });
   }
+
   init() {
     if (!this.elmLinks.length) return;
     this.addEvent();
