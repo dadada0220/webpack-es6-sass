@@ -12,7 +12,7 @@
 
     <header class="l-header" id="js-header">
       <div class="l-header__logo">
-        <img src="<?= $ASSETS_IMG . 'logo/logo.svg'; ?>" alt="<?= $TITLE; ?>" width="200" height="120">
+        <img src="<?= $ASSETS_IMG . '_common/logo/logo.svg'; ?>" alt="<?= $SITE_NAME; ?>" width="150" height="100">
       </div>
       <nav class="l-header__nav">
         <ul class="p-header-nav">
