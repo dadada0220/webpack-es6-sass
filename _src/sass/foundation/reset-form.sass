@@ -22,7 +22,12 @@ select
   // UIの共通スタイル
   background-color: #fff
   border: solid 1px #e5e5e5
-  padding: .5em
+  padding: 6px 16px
+  width: 100%
+  &.__half
+    width: 50%
+  &.__auto
+    width: auto
   // プレースホルダー
   &::placeholder
     color: #b5b5b5
@@ -50,12 +55,12 @@ input
     cursor: pointer
 
 textarea
-  min-height: 100px
+  min-height: 80px
   resize: vertical
 
 select
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAuUlEQVRoge3WwQ6CMBCE4b4etx40HPTp4TEw0Uq6hJQWFXZDif+X7HWYUaM6BwAAAACfNeH6eN4g38/yG4P8MfgZbwjXKma3MVPye8XsyXyA5oi0/Ps6hdwFn3nQ3hG58oOz+YiOLpkHPsLdN2RdC1k3laYrNEYcVl7sGXF4ebFlRDXlxS8jqisvvhlRbXmxNqL68qL0na7922Eq905U/8qnSiNOUV6kI05VXsjf484Z/rcBAAAA8L9eveqSk3Ij7QgAAAAASUVORK5CYII=) right 5px center / 16px no-repeat
-  padding-right: 20px
+  background: $c--white url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M24%2C24H0V0H24Z%22%20fill%3D%22none%22%20opacity%3D%220.87%22%2F%3E%3Cpath%20d%3D%22M15.88%2C9.29%2C12%2C13.17%2C8.12%2C9.29A1%2C1%2C0%2C0%2C0%2C6.71%2C10.7l4.59%2C4.59a1%2C1%2C0%2C0%2C0%2C1.41%2C0L17.3%2C10.7a1%2C1%2C0%2C0%2C0%2C0-1.41%2C1.017%2C1.017%2C0%2C0%2C0-1.42%2C0Z%22%2F%3E%3C%2Fsvg%3E') right 8px center / 24px no-repeat
+  padding-right: 32px
   cursor: pointer
   -webkit-appearance: none
   -moz-appearance: none
@@ -90,50 +95,82 @@ label
   clip: rect(0 0 0 0)
   clip-path: inset(50%)
 
+%__focus-visible
+  content: ""
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  outline: solid 2px rgb(0, 95, 204)
+  border-radius: 3px
+
 label.__checkbox
-  display: block
+  display: inline-block
+  margin-right: 16px
+  margin-bottom: 16px
+  position: relative
   input[type="checkbox"]
     $parent_checkbox: &
     @extend %__input_radio_check_hide
     + span
       display: flex
       align-items: center
+      font-size: 12px
+      font-weight: bold
+      background-color: $c--gray-s
+      padding: 10px
+      padding-right: 40px
       position: relative
       cursor: pointer
+      @at-root #{$parent_checkbox}:checked + span
+        background-color: rgba($c--primary, .1)
       &::before
         content: ""
         display: block
-        background-color: $c--white
-        border: solid 1px $c--white
-        outline: solid 1px $c--gray-m
-        border-radius: 1px
-        width: 16px
-        height: 16px
-        margin-right: 11px
+        outline: solid 2px $c--black
+        width: 14px
+        height: 14px
+        margin-right: 10px
         @at-root #{$parent_checkbox}:checked + span::before
           background-color: $c--primary
           border: solid 2px $c--white
+          outline: solid 2px $c--primary
+      @at-root #{$parent_checkbox}.focus-visible + span::after
+        @extend %__focus-visible
 
 label.__radio
-  display: block
+  display: inline-block
+  margin-right: 16px
+  margin-bottom: 16px
+  position: relative
   input[type="radio"]
     $parent_radio: &
     @extend %__input_radio_check_hide
     + span
       display: flex
       align-items: center
+      font-size: 12px
+      font-weight: bold
+      background-color: $c--gray-s
+      padding: 10px
+      padding-right: 40px
       position: relative
       cursor: pointer
+      @at-root #{$parent_radio}:checked + span
+        background-color: rgba($c--primary, .1)
       &::before
         content: ""
         display: block
         background-color: $c--white
         border-radius: 50%
-        outline: solid 2px $c--primary
+        outline: solid 2px $c--black
         width: 16px
         height: 16px
-        margin-right: 11px
+        margin-right: 10px
         @at-root #{$parent_radio}:checked + span::before
           background-color: $c--primary
           border: solid 3px $c--white
           outline: solid 2px $c--primary
+      @at-root #{$parent_radio}.focus-visible + span::after
+        @extend %__focus-visible
