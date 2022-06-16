@@ -31,6 +31,9 @@ select
   // プレースホルダー
   &::placeholder
     color: #b5b5b5
+  // オートフィルで入力した際の背景色
+  &:-webkit-autofill
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset
   // 編集不可など
   &[readonly],
   &:disabled
@@ -39,9 +42,6 @@ select
     outline: none // フォーカス時のスタイルを無効にすること
 
 input
-  // オートフィルで入力した際の背景色
-  &:-webkit-autofill
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset
   // input[type="number"]の増減ボタン非表示
   &[type="number"]
     -moz-appearance: textfield

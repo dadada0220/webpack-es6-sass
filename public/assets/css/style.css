@@ -125,6 +125,11 @@ textarea::placeholder,
 select::placeholder {
   color: #b5b5b5;
 }
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
 input[readonly], input:disabled,
 textarea[readonly],
 textarea:disabled,
@@ -135,9 +140,6 @@ select:disabled {
   outline: none;
 }
 
-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
-}
 input[type=number] {
   -moz-appearance: textfield;
 }
